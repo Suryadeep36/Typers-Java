@@ -154,21 +154,20 @@ public class Typer extends Frame implements KeyListener, ActionListener, WindowL
     }
 
     public void actionPerformed(ActionEvent ev) {
-        try{
+        try {
             File newFile = new File("./typingStats.txt");
-            if(newFile.exists() == false){
+            if (newFile.exists() == false) {
                 newFile.createNewFile();
             }
             FileWriter fw = new FileWriter(newFile);
-            for(int i = 0; i < playerStats.size(); i++){
-                fw.append("For test - " + (int)(i+1) + "\n");
+            for (int i = 0; i < playerStats.size(); i++) {
+                fw.append("For test - " + (int) (i + 1) + "\n");
                 fw.append("WPM : " + playerStats.get(i).wpm + "\n");
                 fw.append("Accuracy : " + playerStats.get(i).accuracy + "\n");
                 fw.append("Remark : " + generateHeaderText(playerStats.get(i).wpm) + "\n\n");
             }
             fw.close();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -206,7 +205,7 @@ public class Typer extends Frame implements KeyListener, ActionListener, WindowL
             playWrongKey();
             p.elementAt(panelIndex).setBackground(Color.red);
         }
-        if (panelIndex >= text.length())
+        if (panelIndex >= text.length()) {
             clearPanelBackground();
             long endTime = System.nanoTime();
             double timePassed = (endTime - startTime) / 10E8;
@@ -216,37 +215,36 @@ public class Typer extends Frame implements KeyListener, ActionListener, WindowL
             panelIndex = 0;
             doneTyping = true;
         }
+    }
+
+    public void windowOpened(WindowEvent e) {
 
     }
-    public void windowOpened(WindowEvent e)
-    {
+
+    public void windowClosed(WindowEvent e) {
 
     }
-    public void windowClosed(WindowEvent e)
-    {
 
-        
-    }
-    public void windowIconified(WindowEvent e)
-    {
+    public void windowIconified(WindowEvent e) {
 
     }
-    public void windowDeiconified(WindowEvent e)
-    {
+
+    public void windowDeiconified(WindowEvent e) {
 
     }
-    public void windowActivated(WindowEvent e)
-    {
+
+    public void windowActivated(WindowEvent e) {
 
     }
-    public void windowDeactivated(WindowEvent e)
-    {
+
+    public void windowDeactivated(WindowEvent e) {
 
     }
-    public void windowClosing(WindowEvent e)
-    {
+
+    public void windowClosing(WindowEvent e) {
         System.exit(0);
     }
+
     Typer() {
         setSize(500, 500);
         setTitle("Typers");
@@ -261,10 +259,10 @@ public class Typer extends Frame implements KeyListener, ActionListener, WindowL
         menu = new MenuBar();
         m1 = new Menu("Generate Stats");
         MenuItem menuItem = new MenuItem("Generate Stats");
-        menuItem.addActionListener(this); 
-        m1.add(menuItem); 
-        menu.add(m1); 
-        setMenuBar(menu); 
+        menuItem.addActionListener(this);
+        m1.add(menuItem);
+        menu.add(m1);
+        setMenuBar(menu);
         intro = new Label("Start typing when ready!!");
         intro.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 26));
         wpm = new Label("WPM: ");
